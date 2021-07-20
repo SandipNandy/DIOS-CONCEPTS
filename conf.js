@@ -1,6 +1,6 @@
 // An example configuration file.
 exports.config = {
-  directConnect: true,
+  //directConnect: true,
 
   // Capabilities to be passed to the webdriver instance.
   capabilities: {
@@ -8,32 +8,36 @@ exports.config = {
     //'moz:firefoxOptions': {
     //'args': ['--safe-mode']
     },
-    
 
   // Framework to use. Jasmine is recommended.
   framework: 'jasmine',
   
   // Spec patterns are relative to the current working directory when
   // protractor is called.
-  specs: 'DIOS AVNET.js',
+  multiCapabilities: [
+    {
+      //'browserName': 'firefox'
+      "browserName": "chrome",
+      "chromeOptions": {
+        'binary': "C:\\Program Files\\Google\\Chrome1\\Application\\chrome.exe",  
+    },
+      logName:"DIOS :- ",
+      seleniumAddress: 'http://9.79.208.143:4444/wd/hub',
+      specs: ['DIOS.js'],
+        },
+  ],
+  
 
   // Options to be passed to Jasmine.
   jasmineNodeOpts: {
     
       defaultTimeoutInterval: 80000000
     },
-   
-    params: {
-      env: {
-         name: 'QA AVNET'
-      }
-  }, 
 
-  
     onPrepare: function() {
       var AllureReporter = require('jasmine-allure-reporter');
       jasmine.getEnv().addReporter(new AllureReporter({
-        resultsDir: 'allure-results DIOS'
+        resultsDir: 'allure-results'
       }));
     },
      onPrepare: function () {
@@ -52,4 +56,3 @@ exports.config = {
       };
 
 
-    
