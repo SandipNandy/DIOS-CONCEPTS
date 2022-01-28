@@ -3,7 +3,7 @@ var XLSX = require('xlsx');
 
 
 
-var workbook1 = XLSX.readFile('/DIOS/Merchant (1).xlsx');
+var workbook1 = XLSX.readFile('./DIOS/Merchant (1).xlsx');
 var worksheet = workbook1.Sheets['QA'];
 var FirstRow = worksheet['F2'].v;
 var LastRow = worksheet['G2'].v;
